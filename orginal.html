@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -345,9 +344,7 @@ section{position:relative;z-index:1;padding:120px 8vw}
   padding:7px 16px;border-radius:8px;font-size:12px;
   background:rgba(0,240,255,0.04);color:var(--text2);
   border:1px solid rgba(255,255,255,0.04);transition:all .3s;
-  display:inline-flex;align-items:center;gap:7px;
 }
-.pill i{font-size:15px;line-height:1;}
 .pill:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,240,255,0.08)}
 
 /* ── FEATURED PROJECTS ── */
@@ -366,61 +363,32 @@ section{position:relative;z-index:1;padding:120px 8vw}
 .feat-visual{
   position:relative;min-height:360px;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
-  background:#0a0a1a;
 }
-.feat-visual img{
-  width:100%;height:100%;object-fit:cover;
+.feat-visual-bg{
   position:absolute;inset:0;
   transition:transform .6s cubic-bezier(.16,1,.3,1);
 }
-.feat-card:hover .feat-visual img{transform:scale(1.03)}
-.feat-visual video{
-  width:100%;height:100%;object-fit:cover;
-  position:absolute;inset:0;
-}
+.feat-card:hover .feat-visual-bg{transform:scale(1.05)}
+.fv1{background:linear-gradient(135deg,#0c1a2e,#0f2847 40%,#0a3d5c 70%,#00f0ff15)}
+.fv2{background:linear-gradient(135deg,#1a0c2e,#2d0f47 40%,#3d0a5c 70%,#a855f715)}
+.fv3{background:linear-gradient(135deg,#2e1a0c,#472e0f 40%,#5c3d0a 70%,#f9731615)}
+.fv4{background:linear-gradient(135deg,#0c2e1a,#0f4728 40%,#0a5c3d 70%,#10b98115)}
+.fv5{background:linear-gradient(135deg,#2e0c1a,#470f28 40%,#5c0a3d 70%,#ef444415)}
 
-/* ── Project Slideshow ── */
-.feat-slideshow{
-  position:relative;width:100%;height:100%;min-height:360px;
+.feat-visual-content{position:relative;z-index:2;text-align:center;padding:40px}
+.feat-emoji{font-size:72px;margin-bottom:16px;display:block;filter:drop-shadow(0 0 30px rgba(0,0,0,.5))}
+.feat-vlabel{font-size:11px;color:var(--text2);letter-spacing:3px;text-transform:uppercase}
+
+/* animated grid pattern in visual */
+.feat-grid-pattern{
+  position:absolute;inset:0;opacity:.08;
+  background-image:
+    linear-gradient(rgba(255,255,255,.3) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.3) 1px,transparent 1px);
+  background-size:40px 40px;
+  animation:gridShift 4s linear infinite;
 }
-.feat-slideshow .slide{
-  position:absolute;inset:0;
-  opacity:0;transition:opacity .8s ease;
-}
-.feat-slideshow .slide.active{opacity:1}
-.feat-slideshow .slide img{
-  width:100%;height:100%;object-fit:cover;
-  position:absolute;inset:0;
-}
-.slideshow-dots{
-  position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
-  display:flex;gap:8px;z-index:3;
-}
-.slideshow-dots .dot{
-  width:10px;height:10px;border-radius:50%;
-  background:rgba(255,255,255,0.3);
-  border:1px solid rgba(255,255,255,0.2);
-  cursor:pointer;transition:all .3s ease;
-}
-.slideshow-dots .dot.active{
-  background:var(--accent);border-color:var(--accent);
-  box-shadow:0 0 8px var(--accent);
-}
-.slideshow-dots .dot:hover{background:rgba(255,255,255,0.6)}
-.slideshow-nav{
-  position:absolute;top:50%;transform:translateY(-50%);
-  background:rgba(0,0,0,0.5);color:#fff;
-  border:1px solid rgba(255,255,255,0.1);
-  width:36px;height:36px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;font-size:14px;z-index:3;
-  opacity:0;transition:opacity .3s ease;
-  backdrop-filter:blur(4px);
-}
-.feat-visual:hover .slideshow-nav{opacity:1}
-.slideshow-nav.prev{left:12px}
-.slideshow-nav.next{right:12px}
-.slideshow-nav:hover{background:rgba(0,240,255,0.3);border-color:var(--accent)}
+@keyframes gridShift{to{background-position:40px 40px}}
 
 .feat-content{padding:48px 48px;display:flex;flex-direction:column;justify-content:center}
 .feat-tag{
@@ -881,66 +849,35 @@ footer{
       <div class="skill-card r">
         <h3>Languages</h3>
         <div class="skill-pills">
-          <span class="pill"><i class="devicon-python-plain" style="color:#3776AB"></i>Python</span>
-          <span class="pill"><i class="devicon-cplusplus-plain" style="color:#00599C"></i>C++</span>
-          <span class="pill"><i class="devicon-azuresqldatabase-plain" style="color:#00BCF2"></i>SQL</span>
-          <span class="pill"><i class="devicon-html5-plain" style="color:#E34F26"></i><i class="devicon-css3-plain" style="color:#1572B6"></i>HTML/CSS</span>
-          <span class="pill"><i class="devicon-bash-plain" style="color:#4EAA25"></i>Bash</span>
+          <span class="pill">Python</span><span class="pill">JavaScript</span>
+          <span class="pill">C</span><span class="pill">SQL</span>
+          <span class="pill">HTML5</span><span class="pill">CSS3</span>
+          <span class="pill">Bash</span>
         </div>
       </div>
       <div class="skill-card r">
-        <h3>Backend &amp; Frameworks</h3>
+        <h3>Data &amp; Analytics</h3>
         <div class="skill-pills">
-          <span class="pill"><i class="devicon-flask-original" style="color:#FFFFFF"></i>Flask</span>
-          <span class="pill"><i class="devicon-streamlit-plain" style="color:#FF4B4B"></i>Streamlit</span>
-          <span class="pill"><i class="devicon-fastapi-plain" style="color:#009688"></i>REST APIs</span>
-          <span class="pill"><i class="devicon-json-plain" style="color:#5E5C5C"></i>Session Mgmt</span>
-          <span class="pill"><i class="devicon-linux-plain" style="color:#FCC624"></i>Linux Automation</span>
+          <span class="pill">Pandas</span><span class="pill">NumPy</span>
+          <span class="pill">Matplotlib</span><span class="pill">Seaborn</span>
+          <span class="pill">Jupyter</span><span class="pill">Excel</span>
+          <span class="pill">Power BI</span>
         </div>
       </div>
       <div class="skill-card r">
-        <h3>Data &amp; Storage</h3>
+        <h3>Web &amp; Backend</h3>
         <div class="skill-pills">
-          <span class="pill"><i class="devicon-sqlite-plain" style="color:#003B57"></i>SQLite</span>
-          <span class="pill"><i class="devicon-mysql-plain" style="color:#4479A1"></i>MySQL</span>
-          <span class="pill"><i class="devicon-azuresqldatabase-plain" style="color:#00BCF2"></i>Schema Design</span>
-          <span class="pill"><i class="devicon-json-plain" style="color:#5E5C5C"></i>CRUD Ops</span>
-          <span class="pill"><i class="devicon-readthedocs-original" style="color:#8CA1AF"></i>File I/O</span>
-          <span class="pill"><i class="devicon-microsoftexcel-plain" style="color:#217346"></i>Excel</span>
+          <span class="pill">Flask</span><span class="pill">Node.js</span>
+          <span class="pill">Express</span><span class="pill">REST APIs</span>
+          <span class="pill">SQLite</span><span class="pill">MongoDB</span>
         </div>
       </div>
       <div class="skill-card r">
-        <h3>Libraries</h3>
+        <h3>Tools &amp; Platforms</h3>
         <div class="skill-pills">
-          <span class="pill"><i class="devicon-pandas-plain" style="color:#150458"></i>Pandas</span>
-          <span class="pill"><i class="devicon-numpy-plain" style="color:#013243"></i>NumPy</span>
-          <span class="pill"><i class="devicon-python-plain" style="color:#3776AB"></i>PyMuPDF</span>
-          <span class="pill"><i class="devicon-python-plain" style="color:#3776AB"></i>python-docx</span>
-          <span class="pill"><i class="devicon-python-plain" style="color:#3776AB"></i>spaCy</span>
-          <span class="pill"><i class="devicon-python-plain" style="color:#3776AB"></i>SpeechRecognition</span>
-        </div>
-      </div>
-      <div class="skill-card r">
-        <h3>Tools &amp; Workflow</h3>
-        <div class="skill-pills">
-          <span class="pill"><i class="devicon-git-plain" style="color:#F05032"></i>Git</span>
-          <span class="pill"><i class="devicon-github-original" style="color:#FFFFFF"></i>GitHub</span>
-          <span class="pill"><i class="devicon-vscode-plain" style="color:#007ACC"></i>VS Code</span>
-          <span class="pill"><i class="devicon-postman-plain" style="color:#FF6C37"></i>Postman</span>
-          <span class="pill"><i class="devicon-ubuntu-plain" style="color:#E95420"></i>Linux / Ubuntu</span>
-          <span class="pill"><i class="devicon-microsoftpowerbi-plain" style="color:#F2C811"></i>Power BI</span>
-          <span class="pill"><i class="devicon-tailwindcss-original" style="color:#06B6D4"></i>TailScale</span>
-        </div>
-      </div>
-      <div class="skill-card r">
-        <h3>Concepts</h3>
-        <div class="skill-pills">
-          <span class="pill"><i class="devicon-thealgorithms-plain" style="color:#00BCB4"></i>DSA</span>
-          <span class="pill"><i class="devicon-java-plain" style="color:#ED8B00"></i>OOP</span>
-          <span class="pill"><i class="devicon-archlinux-plain" style="color:#1793D1"></i>System Design</span>
-          <span class="pill"><i class="devicon-python-plain" style="color:#3776AB"></i>Modular Arch</span>
-          <span class="pill"><i class="devicon-c-plain" style="color:#A8B9CC"></i>Memory Mgmt</span>
-          <span class="pill"><i class="devicon-nginx-original" style="color:#009639"></i>Server Building</span>
+          <span class="pill">Git</span><span class="pill">GitHub</span>
+          <span class="pill">VS Code</span><span class="pill">Linux</span>
+          <span class="pill">Docker</span><span class="pill">Vercel</span>
         </div>
       </div>
     </div>
@@ -960,7 +897,13 @@ footer{
       <!-- PROJECT 1 -->
       <div class="feat-card r">
         <div class="feat-visual">
-          <img src="screenshots/project1.png" alt="Global Cost of Living Analysis - Power BI Dashboard" loading="lazy">
+          <div class="feat-visual-bg fv1">
+            <div class="feat-grid-pattern"></div>
+          </div>
+          <div class="feat-visual-content">
+            <span class="feat-emoji">🌍</span>
+            <div class="feat-vlabel">World Bank Data · 1990 – 2024</div>
+          </div>
         </div>
         <div class="feat-content">
           <div class="feat-tag">Data Analysis</div>
@@ -983,7 +926,13 @@ footer{
       <!-- PROJECT 2 -->
       <div class="feat-card r">
         <div class="feat-visual">
-          <img src="screenshots/project2.png" alt="Earthquake Detection System" loading="lazy">
+          <div class="feat-visual-bg fv2">
+            <div class="feat-grid-pattern"></div>
+          </div>
+          <div class="feat-visual-content">
+            <span class="feat-emoji">🔔</span>
+            <div class="feat-vlabel">Real-Time Monitoring System</div>
+          </div>
         </div>
         <div class="feat-content">
           <div class="feat-tag">System Design</div>
@@ -1006,7 +955,13 @@ footer{
       <!-- PROJECT 3 -->
       <div class="feat-card r">
         <div class="feat-visual">
-          <img src="screenshots/project3.png" alt="Chennai Property Tax Analysis Dashboard" loading="lazy">
+          <div class="feat-visual-bg fv3">
+            <div class="feat-grid-pattern"></div>
+          </div>
+          <div class="feat-visual-content">
+            <span class="feat-emoji">🏛️</span>
+            <div class="feat-vlabel">Government Data · 2013 – 2018</div>
+          </div>
         </div>
         <div class="feat-content">
           <div class="feat-tag">Urban Analytics</div>
@@ -1029,14 +984,12 @@ footer{
       <!-- PROJECT 4 -->
       <div class="feat-card r">
         <div class="feat-visual">
-          <div class="feat-slideshow" data-autoplay="3500">
-            <div class="slide active"><img src="screenshots/project4/image1.png" alt="Nexus Explorer - List View" loading="lazy"></div>
-            <div class="slide"><img src="screenshots/project4/image4.png" alt="Nexus Explorer - Grid View" loading="lazy"></div>
-            <div class="slide"><img src="screenshots/project4/image3.png" alt="Nexus Explorer - File Converter" loading="lazy"></div>
-            <div class="slide"><img src="screenshots/project4/image2.png" alt="Nexus Explorer - Context Menu" loading="lazy"></div>
-            <button class="slideshow-nav prev" onclick="changeSlide(this,-1)">‹</button>
-            <button class="slideshow-nav next" onclick="changeSlide(this,1)">›</button>
-            <div class="slideshow-dots"></div>
+          <div class="feat-visual-bg fv4">
+            <div class="feat-grid-pattern"></div>
+          </div>
+          <div class="feat-visual-content">
+            <span class="feat-emoji">🚀</span>
+            <div class="feat-vlabel">Desktop Productivity Suite</div>
           </div>
         </div>
         <div class="feat-content">
@@ -1060,7 +1013,13 @@ footer{
       <!-- PROJECT 5 -->
       <div class="feat-card r">
         <div class="feat-visual">
-          <img src="screenshots/project5.png" alt="Smart Terminal CLI Assistant" loading="lazy">
+          <div class="feat-visual-bg fv5">
+            <div class="feat-grid-pattern"></div>
+          </div>
+          <div class="feat-visual-content">
+            <span class="feat-emoji">💻</span>
+            <div class="feat-vlabel">Terminal Automation Assistant</div>
+          </div>
         </div>
         <div class="feat-content">
           <div class="feat-tag">Developer Tools</div>
@@ -1523,56 +1482,6 @@ document.querySelectorAll('.mobile-link').forEach(link => {
     if (mobileMenu.classList.contains('open')) toggleMenu();
   });
 });
-
-// ═══════════════════════════════════
-// PROJECT SLIDESHOW
-// ═══════════════════════════════════
-document.querySelectorAll('.feat-slideshow').forEach(ss => {
-  const slides = ss.querySelectorAll('.slide');
-  const dotsContainer = ss.querySelector('.slideshow-dots');
-  const autoplayDelay = parseInt(ss.dataset.autoplay) || 4000;
-  let current = 0;
-  let timer;
-
-  // create dots
-  slides.forEach((_, i) => {
-    const dot = document.createElement('span');
-    dot.className = 'dot' + (i === 0 ? ' active' : '');
-    dot.addEventListener('click', () => goToSlide(i));
-    dotsContainer.appendChild(dot);
-  });
-
-  function goToSlide(idx) {
-    slides[current].classList.remove('active');
-    dotsContainer.children[current].classList.remove('active');
-    current = idx;
-    slides[current].classList.add('active');
-    dotsContainer.children[current].classList.add('active');
-    resetTimer();
-  }
-
-  function resetTimer() {
-    clearInterval(timer);
-    timer = setInterval(() => {
-      goToSlide((current + 1) % slides.length);
-    }, autoplayDelay);
-  }
-
-  resetTimer();
-
-  // expose globally for nav buttons
-  ss._goToSlide = goToSlide;
-  ss._getCurrent = () => current;
-  ss._getTotal = () => slides.length;
-});
-
-function changeSlide(btn, dir) {
-  const ss = btn.closest('.feat-slideshow');
-  const current = ss._getCurrent();
-  const total = ss._getTotal();
-  ss._goToSlide((current + dir + total) % total);
-}
-
 </script>
 </body>
 </html>
