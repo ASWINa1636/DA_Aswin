@@ -236,7 +236,8 @@ nav.scrolled{
 /* ── HERO STATS STRIP ── */
 .stats-strip{
   display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-  background:var(--card-border);max-width:1400px;margin:-40px auto 0;
+  background:var(--card-border);max-width:1400px;
+  width:calc(100% - 16vw);margin:-40px auto 0;
   border-radius:16px;overflow:hidden;position:relative;z-index:2;
 }
 .stat{
@@ -608,7 +609,7 @@ footer{
   .feat-card:nth-child(even) .feat-visual,.feat-card:nth-child(even) .feat-content{order:unset}
   .feat-visual{min-height:240px}
   .contact-grid{grid-template-columns:1fr}
-  .stats-strip{grid-template-columns:repeat(2,1fr)}
+  .stats-strip{grid-template-columns:repeat(2,1fr); width:calc(100% - 48px)}
   .hero-bottom{flex-direction:column;align-items:flex-start}
   .nav-links{gap:20px}
   .nav-links a{font-size:11px}
@@ -662,7 +663,7 @@ footer{
   .hero{padding:80px 16px 40px}
   .hero h1{font-size:clamp(32px,11vw,48px);letter-spacing:-1px}
   .hero-bottom{margin-top:28px}
-  .stats-strip{grid-template-columns:1fr;gap:1px}
+  .stats-strip{grid-template-columns:repeat(2,1fr);gap:1px; width:calc(100% - 32px)}
   .stat{padding:18px 12px}
   .stat-num{font-size:28px}
   .feat-visual{min-height:140px}
