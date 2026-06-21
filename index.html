@@ -134,7 +134,7 @@ body::after{
 
 /* ── NAV ── */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:9999;
+  position:fixed;top:0;left:0;right:0;z-index:10002;
   padding:0 8vw;height:72px;display:flex;align-items:center;justify-content:space-between;
   transition:all .4s ease;
 }
@@ -161,7 +161,7 @@ nav.scrolled{
 
 /* ── HERO ── */
 .hero{
-  min-height:100vh;display:flex;align-items:center;position:relative;z-index:1;
+  min-height:100vh;min-height:100dvh;display:flex;align-items:center;position:relative;z-index:1;
   padding:120px 8vw 80px;
 }
 .hero-inner{max-width:1400px;margin:0 auto;width:100%}
@@ -628,15 +628,13 @@ footer{
   .ps-header{flex-direction:column;align-items:stretch}
   .search-wrap{max-width:100%}
   .marquee-item{font-size:32px}
-  body{cursor:auto!important}
-  .cursor-dot,.cursor-ring{display:none!important}
+  .search-wrap input{font-size:16px;}
   .skills-grid{grid-template-columns:1fr}
   .section-title{font-size:clamp(28px,8vw,48px)}
   .feat-content{padding:24px 20px}
   .feat-content h3{font-size:22px}
   .feat-content p{font-size:13px}
-  .feat-visual{min-height:180px}
-  .feat-emoji{font-size:48px}
+  .feat-visual, .feat-slideshow{min-height:180px}
   .contact-text h3{font-size:24px}
   .contact-cta{padding:32px 20px}
   .contact-cta .cta-emoji{font-size:40px}
@@ -660,20 +658,27 @@ footer{
   nav{padding:0 16px;height:60px}
   .nav-logo{font-size:18px}
   section{padding:60px 16px}
-  .hero{padding:80px 16px 40px}
+  .hero{padding:80px 16px 60px}
   .hero h1{font-size:clamp(32px,11vw,48px);letter-spacing:-1px}
   .hero-bottom{margin-top:28px}
   .stats-strip{grid-template-columns:repeat(2,1fr);gap:1px; width:calc(100% - 32px)}
   .stat{padding:18px 12px}
   .stat-num{font-size:28px}
-  .feat-visual{min-height:140px}
-  .feat-emoji{font-size:36px}
+  .feat-visual, .feat-slideshow{min-height:140px}
   .feat-content{padding:20px 16px}
   .feat-content h3{font-size:19px}
   .search-wrap input{padding:10px 12px;font-size:13px}
   .search-wrap .s-btn{padding:10px 16px;font-size:12px}
   footer{padding:24px 16px}
   .footer-q{font-size:11px}
+}
+@media (hover: none) {
+  .slideshow-nav { opacity: 0.7; }
+}
+@media (hover: none) and (max-width: 1000px) {
+  body { cursor: auto !important; }
+  .cursor-dot, .cursor-ring { display: none !important; }
+  #rippleCanvas { display: none; }
 }
 
 /* ── HAMBURGER MENU ── */
@@ -1160,6 +1165,7 @@ window.addEventListener('load', () => {
 // ═══════════════════════════════════
 // CUSTOM CURSOR
 // ═══════════════════════════════════
+const isTouchDevice = matchMedia('(hover: none)').matches;
 const dot = document.getElementById('cDot');
 const ring = document.getElementById('cRing');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -1208,7 +1214,7 @@ function animateRipples() {
   });
   requestAnimationFrame(animateRipples);
 }
-animateRipples();
+if (!isTouchDevice) animateRipples();
 
 document.addEventListener('mousemove', e => {
   mx = e.clientX; my = e.clientY;
@@ -1372,7 +1378,7 @@ function animateParticles() {
   }
   requestAnimationFrame(animateParticles);
 }
-animateParticles();
+if (!isTouchDevice) animateParticles();
 
 // ═══════════════════════════════════
 // GITHUB SEARCH
