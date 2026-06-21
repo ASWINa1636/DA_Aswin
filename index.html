@@ -24,7 +24,7 @@
   --muted:#334155;
   --glow:rgba(0,240,255,0.15);
 }
-html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg)}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg);overflow-x:hidden}
 html::-webkit-scrollbar{width:6px}
 html::-webkit-scrollbar-track{background:var(--bg)}
 html::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
@@ -162,7 +162,7 @@ nav.scrolled{
 /* ── HERO ── */
 .hero{
   min-height:100vh;min-height:100dvh;display:flex;align-items:center;position:relative;z-index:1;
-  padding:120px 8vw 80px;
+  padding:120px 8vw 80px;overflow:hidden;
 }
 .hero-inner{max-width:1400px;margin:0 auto;width:100%}
 .hero-tag{
